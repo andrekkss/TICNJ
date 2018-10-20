@@ -14,7 +14,7 @@ import java.util.*;
  * @since 19-10-2018
  */
 public class List<T>{
-    ArrayList<T> list = new ArrayList<T>();
+    private ArrayList<T> list = new ArrayList<T>();
 
     /**
      * Essa função faz a inserção da lista

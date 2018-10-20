@@ -7,13 +7,15 @@ package model;
 
 /**
  *
- * @author andre
+ * @author Delmar
+ * @author Cainan
+ * 
  */
 public class Newton {
 
     private double n;
     
-    public Newton (double n){
+    public Newton(double n){
         setN(n);
     } 
     /**
@@ -35,4 +37,8 @@ public class Newton {
         
     }
     
+    @Override
+    public String toString() {
+        return "[Numero: " + this.n + "]";
+    }
 }

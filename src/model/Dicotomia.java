@@ -8,13 +8,19 @@ package model;
 /**
  * Classe responsável por fazer as equações referentes a Dicotomia 
  * @since 19-10-2018
- * @author andre
+ * @author Caique
+ * @author Gabriel
+ * 
  */
 public class Dicotomia {
-    
     private double x1;
     private double x2;
 
+    public Dicotomia(double x1, double x2){
+        setX1(x1);
+        setX2(x2);
+    }
+    
     /**
      * @return the x1
      */
@@ -42,7 +48,9 @@ public class Dicotomia {
     public void setX2(double x2) {
         this.x2 = x2;
     }
-
     
-    
+    @Override
+    public String toString() {
+        return "[x¹: " + this.x1 + ", x²: " + this.x2 + "]";
+    }
 }
