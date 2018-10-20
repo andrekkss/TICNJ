@@ -10,5 +10,25 @@ package model;
  * @author andre
  */
 public class Newton {
+
+    private double n;
+    /**
+     * @return the n
+     */
+    public double getN() {
+        return n;
+    }
+
+    /**
+     * @param n the n to set
+     */
+    public void setN(double n) {
+        this.n = n;
+    }
+    
+    
+    public void derivada (){
+        
+    }
     
 }
