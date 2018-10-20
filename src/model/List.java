@@ -17,7 +17,7 @@ public class List<T>{
     private ArrayList<T> list = new ArrayList<T>();
 
     /**
-     * Essa função faz a inserção da lista
+     * isInsert faz a inserção da lista
      * @param t O parametro do tipo Object
      */
     public void isInsert(T t){ 
@@ -33,7 +33,7 @@ public class List<T>{
         }
     }
     /**
-     * Essa função faz o delete de um dado na lista
+     * isDelete faz o delete de um dado na lista
      * @param t O parametro do tipo Object
      */
     public void isDelete(T t){
@@ -41,7 +41,7 @@ public class List<T>{
     }
     
     /**
-     * Essa função checa se a lista ta vazia
+     * isEmpty checa se a lista ta vazia
      */
     public void isEmpty(){ 
         if(list.isEmpty()){
