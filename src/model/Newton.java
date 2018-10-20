@@ -12,6 +12,10 @@ package model;
 public class Newton {
 
     private double n;
+    
+    public Newton (double n){
+        setN(n);
+    } 
     /**
      * @return the n
      */
