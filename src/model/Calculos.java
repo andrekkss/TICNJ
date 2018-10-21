@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package model;
-import java.lang.Math;
 
+import java.lang.Math;
 
 /**
  *
@@ -36,7 +36,4 @@ public class Calculos {
         fpm = Math.pow(pm, 3);
         return fpm;
     }
-
-    
-        
 }

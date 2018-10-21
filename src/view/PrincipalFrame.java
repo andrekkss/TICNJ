@@ -22,7 +22,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
     public PrincipalFrame() {
         initComponents();
         transparentButton();
-        componentMount();
+        componentWillMount();
     }
 
     /**
@@ -126,7 +126,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
 
-        btnNewton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8_Pi_48px.png"))); // NOI18N
+        btnNewton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/newton_icon_48px.png"))); // NOI18N
         btnNewton.setFocusPainted(false);
         btnNewton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +190,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalActionPerformed
@@ -197,23 +198,23 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalActionPerformed
 
     private void btnNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewtonActionPerformed
-        componentWillMount(new PCalculos());
+        componentDidMount(new PCalculos());
     }//GEN-LAST:event_btnNewtonActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        componentMount();
+        componentWillMount();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
-        componentWillMount(new PHistory());
+        componentDidMount(new PHistory());
     }//GEN-LAST:event_btnHistoryActionPerformed
 
-    private void componentMount(){
-        management.SwitchPanel(JPTela, new PPrincipal(), false);
+    private void componentWillMount(){
+        management.SwitchPanel(JPTela, new PPrincipal());
     }
     
-    private void componentWillMount(Component comp){
-        management.SwitchPanel(JPTela, comp, true);
+    private void componentDidMount(Component comp){
+        management.SwitchPanel(JPTela, comp);
     }
     
     public void transparentButton(){

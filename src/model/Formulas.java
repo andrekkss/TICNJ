@@ -36,8 +36,5 @@ public class Formulas {
         double fpm = 0;
         fpm = Math.pow(pm, 3);
         return fpm;
-    }
-
-    
-        
+    }      
 }

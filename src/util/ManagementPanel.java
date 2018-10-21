@@ -17,14 +17,10 @@ import javax.swing.*;
  */
 public class ManagementPanel extends javax.swing.JFrame {
     
-   public void SwitchPanel(JPanel panel, Component comp, Boolean isMount){
-        if(isMount){ 
-            panel.removeAll(); 
-        }
+   public void SwitchPanel(JPanel panel, Component comp){
         panel.setLayout(new BorderLayout());
         panel.add(comp);
         panel.validate();
-        pack();
    }
 
    public void transparentButton(JButton button){
