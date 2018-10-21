@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.component;
 
 /**
  *
  * @author andre
  */
-public class PCalculos extends javax.swing.JPanel {
+public class PHistory extends javax.swing.JPanel {
 
     /**
-     * Creates new form JCalculos
+     * Creates new form PHistory
      */
-    public PCalculos() {
+    public PHistory() {
         initComponents();
     }
 

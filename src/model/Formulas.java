@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package model;
+
 import java.lang.Math;
 
-
 /**
- *
+ * 
  * @author Gabriel Moreno
+ * 
  */
 public class Formulas {
     

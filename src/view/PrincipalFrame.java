@@ -6,13 +6,16 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import util.ManagementPanel;
+import view.component.*;
 
 /**
  *
  * @author andre
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-
+    ManagementPanel management = new ManagementPanel();
     /**
      * Creates new form PrincipalFrame
      */
@@ -94,13 +97,27 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(84, 110, 122));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(41, 67, 78));
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8_Home_48px.png"))); // NOI18N
+        btnHome.setBorderPainted(false);
+        btnHome.setFocusPainted(false);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         btnHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8_Timesheet_48px.png"))); // NOI18N
+        btnHistory.setFocusPainted(false);
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
 
         btnCal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8_Calculator_48px.png"))); // NOI18N
         btnCal.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +127,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
         });
 
         btnNewton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons8_Pi_48px.png"))); // NOI18N
+        btnNewton.setFocusPainted(false);
+        btnNewton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,36 +193,34 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalActionPerformed
-        try{
-           Runtime.getRuntime().exec("C:\\Windows\\System32\\calc.exe");
-        }catch(Exception e){
-           System.err.println("Deu pau!");
-      }
+        management.isCalculator();
     }//GEN-LAST:event_btnCalActionPerformed
 
+    private void btnNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewtonActionPerformed
+        componentWillMount(new PCalculos());
+    }//GEN-LAST:event_btnNewtonActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        componentMount();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+        componentWillMount(new PHistory());
+    }//GEN-LAST:event_btnHistoryActionPerformed
+
     private void componentMount(){
-        JPTela.setLayout(new BorderLayout());
-        JPTela.add(new PPrincipal());
-        JPTela.validate();
+        management.SwitchPanel(JPTela, new PPrincipal(), false);
+    }
+    
+    private void componentWillMount(Component comp){
+        management.SwitchPanel(JPTela, comp, true);
     }
     
     public void transparentButton(){
-        btnHome.setOpaque(false);
-        btnHome.setContentAreaFilled(false);
-        btnHome.setBorderPainted(false);
-        
-        btnNewton.setOpaque(false);
-        btnNewton.setContentAreaFilled(false);
-        btnNewton.setBorderPainted(false);
-        
-        btnHistory.setOpaque(false);
-        btnHistory.setContentAreaFilled(false);
-        btnHistory.setBorderPainted(false);
-        
-        btnCal.setOpaque(false);
-        btnCal.setContentAreaFilled(false);
-        btnCal.setBorderPainted(false);
-        
+        management.transparentButton(btnHome);
+        management.transparentButton(btnNewton);
+        management.transparentButton(btnHistory);
+        management.transparentButton(btnCal);
     }
     
     /**

@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
  * @author Gabriel Moreno
  */
 public class Arredondamento {
+    
     public void arredonda(double num){
 	int decimalPlace = 2;
 	BigDecimal bd = new BigDecimal(num);
@@ -20,5 +21,6 @@ public class Arredondamento {
 	num = bd.doubleValue();
 	System.out.println(num);
     }
+    
 }
 
