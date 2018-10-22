@@ -37,6 +37,7 @@ public class Formulas {
         fpm = Math.pow(pm, 3);
         return fpm;
     } 
+    
     public static double margemErro(double x1, double x2){
         double margemErro = 0;
         double resultado = 0;
@@ -45,4 +46,16 @@ public class Formulas {
         return margemErro;        
     }
     
+    public static double newtonRp(double x, int y) {
+
+        if (y < 0) {
+            return x;
+        } else {
+            double n = 0;
+
+            n = (x - (Math.pow(x, 3) / (3 * (Math.pow(x, 2)))));
+
+            return newtonRp(n,y-1);
+        }
+    }
 }
