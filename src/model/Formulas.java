@@ -36,5 +36,13 @@ public class Formulas {
         double fpm = 0;
         fpm = Math.pow(pm, 3);
         return fpm;
-    }      
+    } 
+    public static double margemErro(double x1, double x2){
+        double margemErro = 0;
+        double resultado = 0;
+        resultado = x1-x2;
+        margemErro = Math.abs(resultado);
+        return margemErro;        
+    }
+    
 }
