@@ -15,10 +15,14 @@ public class Newton {
 
     private double n;
     
+    /** 
+     * Método construtor
+     * @param n 
+     */
     public Newton(double n){
         setN(n);
     } 
-    /**
+    /** Getters e Setters
      * @return the n
      */
     public double getN() {
