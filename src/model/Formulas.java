@@ -8,35 +8,61 @@ package model;
 import java.lang.Math;
 
 /**
- * 
+ * Classe responsável pelas formulas Dicotomia e Newton Raphson
  * @author Gabriel Moreno
- * 
+ * @version 1.0
+ * @since 19-10-2018
  */
 public class Formulas {
-    
+    /**
+     * fx1 é o calculo da função para o primeiro valor de x
+     * @param x1 O parâmetro do tipo object
+     * 
+     */
     public  double fx1(double x1){
         double fx1 = 0;
         fx1 = Math.pow(x1,3);
         return fx1;
     }
-    
+    /**
+     * fx2 é o culculo da função para o segundo valor de x
+     * @param x2 O parâmetro do tipo object
+     * 
+     */
     public static double fx2(double x2){
         double fx2 = 0;
         fx2 = Math.pow(x2, 3);
         return fx2;
     }
     
+    /**
+     * pm é calculo do ponto médio entre os valores de x1 e x2
+     * @param x1 O parâmetro do tipo object
+     * @param x2 O parâmetro do tipo object
+     *  
+     */
     public static double pm(double x1,double x2){
         double pm = 0;
         pm = (x1+x2)/2;
         return pm;
     }
-    
+    /**
+     * fpm é o calculo da função recebendo com valor o ponto médio
+     * @param pm O parâmetro do tipo object
+     *  
+     */
     public static double fpm(double pm){
         double fpm = 0;
         fpm = Math.pow(pm, 3);
         return fpm;
     } 
+    
+    /**
+     * margemErro é o módulo da subtração do segundo valor de x pelo primeiro valor de x
+     * @param x1
+     * @param x2
+     *  
+     */
     
     public static double margemErro(double x1, double x2){
         double margemErro = 0;
@@ -45,7 +71,13 @@ public class Formulas {
         margemErro = Math.abs(resultado);
         return margemErro;        
     }
-    
+     
+    /**
+     * newtonRp é o calculo para aproximar as raízes da equação recebendo camo parametros o valor inicial de x e o numero de interações
+     * @param x O parâmetro do tipo object
+     * @param y O parâmetro do tipo object
+     *  
+     */
     public static double newtonRp(double x, int y) {
 
         if (y < 0) {
