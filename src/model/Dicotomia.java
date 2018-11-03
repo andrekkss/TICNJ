@@ -22,7 +22,16 @@ public class Dicotomia {
     }
     
     /**
+     * Método construtor acima
+     * @since 02-11-2018
      * @return the x1
+     */
+    
+    
+    /**
+     * Getters/Setters abaixo
+     * @since 02-11-2018
+     * @return 
      */
     public double getX1() {
         return x1;
@@ -49,6 +58,11 @@ public class Dicotomia {
         this.x2 = x2;
     }
     
+    /**
+     * Criação do ToSring abaixo
+     * @since 02-11-2018
+     * @return 
+     */
     @Override
     public String toString() {
         return "[x¹: " + this.x1 + ", x²: " + this.x2 + "]";
