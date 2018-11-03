@@ -9,8 +9,10 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
- *
+ * Classe utilitária para arredondamento de valores
  * @author Gabriel Moreno
+ * @version 1.0
+ * @since 19-10-2018
  */
 public class Arredondamento {
     
