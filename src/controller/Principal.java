@@ -1,6 +1,5 @@
 package controller;
 
-import model.Dicotomia;
 import view.PrincipalFrame;
 
 /*
@@ -10,7 +9,6 @@ import view.PrincipalFrame;
  */
 
 /**
- *
  * @author andre
  */
 public class Principal {
@@ -19,11 +17,7 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /**
         PrincipalFrame tela = new PrincipalFrame();
-        tela.setVisible(true);  */
-        
-        Dicotomia d = new Dicotomia(5.0, 2.0);
-        System.out.println(d.toString());
+        tela.setVisible(true);
     }
 }

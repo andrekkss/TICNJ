@@ -16,13 +16,11 @@ import java.text.DecimalFormat;
  */
 public class Arredondamento {
     
-    public void arredonda(double num){
-	int decimalPlace = 2;
-	BigDecimal bd = new BigDecimal(num);
-	bd = bd.setScale(decimalPlace,BigDecimal.ROUND_HALF_UP);
-	num = bd.doubleValue();
-	System.out.println(num);
+    public static double arredonda(double num) {
+        int decimalPlace = 2;
+        BigDecimal bd = new BigDecimal(num);
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        num = bd.doubleValue();
+        return num;
     }
-    
 }
-

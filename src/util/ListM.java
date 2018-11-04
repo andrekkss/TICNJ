@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package util;
 
 import java.util.*;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Essa classe para gerenciamento da ArrayList no qual irá receber os parametros dinamicamente
@@ -13,38 +14,46 @@ import java.util.*;
  * @version 1.0
  * @since 19-10-2018
  */
-public class List<T>{
+public class ListM<T>{
     private ArrayList<T> list = new ArrayList<T>();
 
+    /**
+     * @return the list
+     */
+    public ArrayList<T> getList() {
+        return list;
+    }
+    
     /**
      * isInsert faz a inserção da lista
      * @param t O parametro do tipo Object
      */
     public void isInsert(T t){ 
-        list.add(t); 
+        getList().add(t); 
     }
     
     /**
      * IsList ira listar o conteudo da lista
      */
     public void isList(){
-        for(T t: list){
-            System.out.println(t);
+        for(T t: getList()){
+             System.out.println(ArrayUtils.toString(t));
         }
     }
+    
     /**
      * isDelete faz o delete de um dado na lista
      * @param t O parametro do tipo Object
      */
     public void isDelete(T t){
-        list.remove(t);
+        getList().remove(t);
     }
     
     /**
      * isEmpty checa se a lista ta vazia
      */
     public void isEmpty(){ 
-        if(list.isEmpty()){
+        if(getList().isEmpty()){
             System.out.println("Lista está vazia");
         }else{
             System.out.println("Lista não está vazia");

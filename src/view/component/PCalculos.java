@@ -5,12 +5,16 @@
  */
 package view.component;
 
+import javax.swing.table.DefaultTableModel;
+import util.ManagementPanel;
+
 /**
  *
  * @author andre
  */
 public class PCalculos extends javax.swing.JPanel {
-
+    private ManagementPanel m = new ManagementPanel();
+    
     /**
      * Creates new form JCalculos
      */
@@ -27,21 +31,25 @@ public class PCalculos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jtGuias = new javax.swing.JTabbedPane();
         jtDictomia = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TabelaDicotomia = new javax.swing.JTable();
         jlValor = new javax.swing.JLabel();
         txtX1 = new javax.swing.JTextField();
         jlValor2 = new javax.swing.JLabel();
         txtX2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jlFormula = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtIteracoes = new javax.swing.JTextField();
         jtNewton = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        TabelaNewton = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txtInteracoes = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtX = new javax.swing.JTextField();
         btnCalcular = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
@@ -51,24 +59,15 @@ public class PCalculos extends javax.swing.JPanel {
 
         jtDictomia.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaDicotomia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "X1", "f(X1)", "X2", "f(X2)", "PM = X1+X2/2", "f(PM)", "|X2 - X1|"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(TabelaDicotomia);
 
         jlValor.setText("valor de x1:");
 
@@ -86,9 +85,9 @@ public class PCalculos extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Arredondamento:");
-
         jlFormula.setText("Formula: x³(x^3)");
+
+        jLabel1.setText("iterações:");
 
         javax.swing.GroupLayout jtDictomiaLayout = new javax.swing.GroupLayout(jtDictomia);
         jtDictomia.setLayout(jtDictomiaLayout);
@@ -106,11 +105,11 @@ public class PCalculos extends javax.swing.JPanel {
                         .addComponent(jlValor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtX1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
+                        .addGap(58, 58, 58)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1)))
-                .addContainerGap(471, Short.MAX_VALUE))
+                        .addComponent(txtIteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(497, Short.MAX_VALUE))
             .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jtDictomiaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -125,7 +124,7 @@ public class PCalculos extends javax.swing.JPanel {
                     .addComponent(jlValor)
                     .addComponent(txtX1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jCheckBox1))
+                    .addComponent(txtIteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlValor2)
@@ -140,28 +139,36 @@ public class PCalculos extends javax.swing.JPanel {
                     .addContainerGap()))
         );
 
-        jTabbedPane1.addTab("Dictomia", jtDictomia);
+        jtGuias.addTab("Dictomia", jtDictomia);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaNewton.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Iterações", "Xi", "F(Xi)", "dF(Xi)", "X(i+1)", "X(i+1) - Xi"
             }
         ));
-        jTable3.setGridColor(new java.awt.Color(84, 110, 122));
-        jScrollPane3.setViewportView(jTable3);
+        TabelaNewton.setGridColor(new java.awt.Color(84, 110, 122));
+        jScrollPane3.setViewportView(TabelaNewton);
+
+        jLabel2.setText("Valor de x:");
+
+        txtInteracoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInteracoesActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Interações:");
+
+        txtX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,13 +176,33 @@ public class PCalculos extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtX, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtInteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtX, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -191,9 +218,14 @@ public class PCalculos extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Newton Rapshon", jtNewton);
+        jtGuias.addTab("Newton Rapshon", jtNewton);
 
         btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
 
@@ -203,7 +235,7 @@ public class PCalculos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jtGuias, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCalcular)
@@ -216,13 +248,13 @@ public class PCalculos extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,24 +266,44 @@ public class PCalculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtX2ActionPerformed
 
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        if(jtGuias.getSelectedComponent() == jtDictomia){ 
+                ((DefaultTableModel)TabelaDicotomia.getModel()).setRowCount(0);
+                TabelaDicotomia.setModel(m.isDicotomia(Double.parseDouble(txtX1.getText()), Double.parseDouble(txtX2.getText()), Double.parseDouble(txtIteracoes.getText())));
+        } 
+        if(jtGuias.getSelectedComponent() == jtNewton) TabelaNewton.setModel(m.isNewton(Double.parseDouble(txtX.getText()), Double.parseDouble(txtInteracoes.getText())));
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void txtInteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInteracoesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInteracoesActionPerformed
+
+    private void txtXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtXActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelaDicotomia;
+    private javax.swing.JTable TabelaNewton;
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JLabel jlFormula;
     private javax.swing.JLabel jlValor;
     private javax.swing.JLabel jlValor2;
     private javax.swing.JPanel jtDictomia;
+    private javax.swing.JTabbedPane jtGuias;
     private javax.swing.JPanel jtNewton;
+    private javax.swing.JTextField txtInteracoes;
+    private javax.swing.JTextField txtIteracoes;
+    private javax.swing.JTextField txtX;
     private javax.swing.JTextField txtX1;
     private javax.swing.JTextField txtX2;
     // End of variables declaration//GEN-END:variables

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package util;
 
 import java.lang.Math;
 
@@ -15,45 +15,68 @@ import java.lang.Math;
  */
 public class Formulas {
     
-    public  double cubo(double x){
+    /**
+     * Cubo calcula o valor de x ao cubo.
+     * @param x O parâmetro do tipo double
+     * @return retorna o valor de x³
+     */
+    public static double cubo(double x){
         double y = 0;
         y = Math.pow(x,3);
+        y = Arredondamento.arredonda(y);
         return y;
     }
     
     /**
-     * pm é calculo do ponto médio entre os valores de x1 e x2
-     * @param x1 O parâmetro do tipo object
-     * @param x2 O parâmetro do tipo object
+     * funcDerivada é o calculo da função para o valor de x no metodo de Newton
+     * Rhapson
+     *
+     * @param x1 É um parâmetro do tipo double
      *
      */
-    public static double pm(double x1,double x2){
+    public static double cuboDerivada(double x1) {
+        double fn = 0;
+        fn = (3 * (Math.pow(x1, 2)));
+        return fn;
+    }
+
+    /**
+     * pm é calculo do ponto médio entre os valores de x1 e x2
+     * @param x1 O parâmetro do tipo double
+     * @param x2 O parâmetro do tipo double
+     * @return retorna o valor medio 
+     */
+    public static double pm(double x1, double x2){
         double pm = 0;
         pm = (x1+x2)/2;
+        pm = Arredondamento.arredonda(pm);
         return pm;
     }
+    
     /**
      * fpm é o calculo da função recebendo com valor o ponto médio
-     * @param pm O parâmetro do tipo object
-     *
+     * @param pm O parâmetro do tipo double
+     * @return o valor de pm ao cubo 
      */
     public static double fpm(double pm){
         double fpm = 0;
         fpm = Math.pow(pm, 3);
+        fpm = Arredondamento.arredonda(fpm);
         return fpm;
     } 
     
     /**
      * margemErro é o módulo da subtração do segundo valor de x pelo primeiro valor de x
-     * @param x1
-     * @param x2
-     *
+     * @param x1 O parâmetro do tipo double
+     * @param x2 O parâmetro do tipo double
+     * @return retorna a marge de erro;
      */
     public static double margemErro(double x1, double x2){
         double margemErro = 0;
         double resultado = 0;
         resultado = x1-x2;
         margemErro = Math.abs(resultado);
+        margemErro = Arredondamento.arredonda(margemErro);
         return margemErro;        
     }
 
@@ -64,14 +87,11 @@ public class Formulas {
      *
      */
     public static double newtonRp(double x, int y) {
-
         if (y < 0) {
             return x;
         } else {
             double n = 0;
-
             n = (x - (Math.pow(x, 3) / (3 * (Math.pow(x, 2)))));
-
             return newtonRp(n,y-1);
         }
     }

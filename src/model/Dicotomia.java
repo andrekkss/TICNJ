@@ -5,6 +5,10 @@
  */
 package model;
 
+import util.Formulas;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import util.ListM;
 /**
  * Classe responsável por fazer as equações referentes a Dicotomia 
  * @since 19-10-2018
@@ -30,6 +34,23 @@ public class Dicotomia {
         setError(getX1(), getX2());
     }
     
+    public Dicotomia(double x1, double pm, double fpm, Boolean t){
+        if(t){
+          setX1(x1);
+          setFx1(getX1());
+          setX2(pm);
+          this.fx2 = fpm;
+        }else{
+          setX1(pm);
+          this.fx1= fpm;
+          setX2(x1);
+          setFx2(x1);
+        }
+        setPm(getX1(), getX2());
+        setFpm(getPm());
+        setError(getX1(), getX2());
+    }
+       
     /**
      * @return the x1
      */
@@ -126,6 +147,20 @@ public class Dicotomia {
      */
     public void setError(double x1, double x2) {
         this.error = f.margemErro(x1, x2);
+    }
+    
+    public static DefaultTableModel getTableModel(ListM l){
+        List<Dicotomia> lista = l.getList();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("X1"); modelo.addColumn("X2");
+        modelo.addColumn("f(X1)");modelo.addColumn("f(x2)");
+        modelo.addColumn("PM = X1+X2/2"); modelo.addColumn("f(PM)");
+        modelo.addColumn("|X2 - X1|");
+        for(Dicotomia d: lista){
+            Double[] g = {d.getX1(), d.getX2(), d.getFx1(), d.getFx2(), d.getPm(), d.getFpm(), d.getError()};
+            modelo.addRow(g);
+        }
+        return modelo;
     }
 
     @Override
