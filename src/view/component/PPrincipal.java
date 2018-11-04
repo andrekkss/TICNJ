@@ -31,8 +31,11 @@ public class PPrincipal extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         JPTela = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -49,17 +52,54 @@ public class PPrincipal extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Sistema integrado de cálculo numérico.");
 
-        JPTela.setBackground(new java.awt.Color(238, 238, 238));
+        JPTela.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/balao-de-pensamento_318-48265.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Nomes.png"))); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Grupo:");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/caricature-isaac-newton.png"))); // NOI18N
 
         javax.swing.GroupLayout JPTelaLayout = new javax.swing.GroupLayout(JPTela);
         JPTela.setLayout(JPTelaLayout);
         JPTelaLayout.setHorizontalGroup(
             JPTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(JPTelaLayout.createSequentialGroup()
+                .addGroup(JPTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPTelaLayout.createSequentialGroup()
+                        .addGroup(JPTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JPTelaLayout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(JPTelaLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPTelaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         JPTelaLayout.setVerticalGroup(
             JPTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 229, Short.MAX_VALUE)
+            .addGroup(JPTelaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JPTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JPTelaLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -87,19 +127,15 @@ public class PPrincipal extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/caricature-isaac-newton.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 436, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 794, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+            .addGap(0, 219, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -123,8 +159,11 @@ public class PPrincipal extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPTela;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
