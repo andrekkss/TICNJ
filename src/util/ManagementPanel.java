@@ -8,7 +8,6 @@ package util;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import org.apache.commons.lang3.ArrayUtils;
 import model.Dicotomia;
 import model.Newton;
 

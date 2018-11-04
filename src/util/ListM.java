@@ -6,7 +6,6 @@
 package util;
 
 import java.util.*;
-import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Essa classe para gerenciamento da ArrayList no qual irá receber os parametros dinamicamente
@@ -37,7 +36,7 @@ public class ListM<T>{
      */
     public void isList(){
         for(T t: getList()){
-             System.out.println(ArrayUtils.toString(t));
+             System.out.println(t);
         }
     }
     

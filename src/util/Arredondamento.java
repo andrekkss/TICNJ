@@ -6,7 +6,6 @@
 package util;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 /**
  * Classe utilitária para arredondamento de valores
