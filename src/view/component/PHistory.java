@@ -5,17 +5,30 @@
  */
 package view.component;
 
+import dao.JsonPersistence;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author andre
  */
 public class PHistory extends javax.swing.JPanel {
+    private JsonPersistence json = new JsonPersistence();
 
     /**
-     * Creates new form PHistory
+     * Creates new form Phistory
      */
-    public PHistory() {
+    public PHistory() throws FileNotFoundException {
         initComponents();
+        componentDidMount();
+    }
+    
+    public void componentDidMount() throws FileNotFoundException{
+        TabelaDicotomia1.setModel(json.montaTabelaDicotomia());
+        TabelaNewton.setModel(json.montaTabelaNewton());
     }
 
     /**
@@ -27,19 +40,99 @@ public class PHistory extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        guias = new javax.swing.JTabbedPane();
+        guiaDicotomia = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TabelaDicotomia1 = new javax.swing.JTable();
+        guiaNewton = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TabelaNewton = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(794, 538));
+
+        TabelaDicotomia1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "X1", "f(X1)", "X2", "f(X2)", "PM = X1+X2/2", "f(PM)", "|X2 - X1|"
+            }
+        ));
+        TabelaDicotomia1.setMinimumSize(new java.awt.Dimension(450, 0));
+        jScrollPane3.setViewportView(TabelaDicotomia1);
+
+        javax.swing.GroupLayout guiaDicotomiaLayout = new javax.swing.GroupLayout(guiaDicotomia);
+        guiaDicotomia.setLayout(guiaDicotomiaLayout);
+        guiaDicotomiaLayout.setHorizontalGroup(
+            guiaDicotomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(guiaDicotomiaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        guiaDicotomiaLayout.setVerticalGroup(
+            guiaDicotomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(guiaDicotomiaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        guias.addTab("Dicotomia", guiaDicotomia);
+
+        guiaNewton.setPreferredSize(new java.awt.Dimension(792, 538));
+
+        TabelaNewton.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Iterações", "Xi", "F(Xi)", "dF(Xi)", "X(i+1)", "X(i+1) - Xi"
+            }
+        ));
+        TabelaNewton.setGridColor(new java.awt.Color(84, 110, 122));
+        jScrollPane4.setViewportView(TabelaNewton);
+
+        javax.swing.GroupLayout guiaNewtonLayout = new javax.swing.GroupLayout(guiaNewton);
+        guiaNewton.setLayout(guiaNewtonLayout);
+        guiaNewtonLayout.setHorizontalGroup(
+            guiaNewtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guiaNewtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        guiaNewtonLayout.setVerticalGroup(
+            guiaNewtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(guiaNewtonLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        guias.addTab("Newton", guiaNewton);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(guias)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(guias, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelaDicotomia1;
+    private javax.swing.JTable TabelaNewton;
+    private javax.swing.JPanel guiaDicotomia;
+    private javax.swing.JPanel guiaNewton;
+    private javax.swing.JTabbedPane guias;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

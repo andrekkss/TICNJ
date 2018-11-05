@@ -152,12 +152,12 @@ public class Dicotomia {
     public static DefaultTableModel getTableModel(ListM l){
         List<Dicotomia> lista = l.getList();
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("X1"); modelo.addColumn("X2");
-        modelo.addColumn("f(X1)");modelo.addColumn("f(x2)");
+        modelo.addColumn("X1"); modelo.addColumn("f(X1)");
+        modelo.addColumn("X2"); modelo.addColumn("f(x2)");
         modelo.addColumn("PM = X1+X2/2"); modelo.addColumn("f(PM)");
         modelo.addColumn("|X2 - X1|");
         for(Dicotomia d: lista){
-            Double[] g = {d.getX1(), d.getX2(), d.getFx1(), d.getFx2(), d.getPm(), d.getFpm(), d.getError()};
+            Double[] g = {d.getX1(), d.getFx1(), d.getX2(), d.getFx2(), d.getPm(), d.getFpm(), d.getError()};
             modelo.addRow(g);
         }
         return modelo;

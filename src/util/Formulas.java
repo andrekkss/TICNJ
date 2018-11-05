@@ -6,10 +6,11 @@
 package util;
 
 import java.lang.Math;
+import java.math.BigDecimal;
 
 /**
  * Classe responsável pelas formulas Dicotomia e Newton Raphson
- * @author Gabriel Moreno
+ * @author Gabriel Moreno  
  * @version 1.0
  * @since 19-10-2018
  */
@@ -23,7 +24,7 @@ public class Formulas {
     public static double cubo(double x){
         double y = 0;
         y = Math.pow(x,3);
-        y = Arredondamento.arredonda(y);
+        y = arredonda(y);
         return y;
     }
     
@@ -37,6 +38,7 @@ public class Formulas {
     public static double cuboDerivada(double x1) {
         double fn = 0;
         fn = (3 * (Math.pow(x1, 2)));
+        fn = arredonda(fn);
         return fn;
     }
 
@@ -49,7 +51,7 @@ public class Formulas {
     public static double pm(double x1, double x2){
         double pm = 0;
         pm = (x1+x2)/2;
-        pm = Arredondamento.arredonda(pm);
+        pm = arredonda(pm);
         return pm;
     }
     
@@ -61,7 +63,7 @@ public class Formulas {
     public static double fpm(double pm){
         double fpm = 0;
         fpm = Math.pow(pm, 3);
-        fpm = Arredondamento.arredonda(fpm);
+        fpm = arredonda(fpm);
         return fpm;
     } 
     
@@ -76,7 +78,7 @@ public class Formulas {
         double resultado = 0;
         resultado = x1-x2;
         margemErro = Math.abs(resultado);
-        margemErro = Arredondamento.arredonda(margemErro);
+        margemErro = arredonda(margemErro);
         return margemErro;        
     }
 
@@ -94,5 +96,13 @@ public class Formulas {
             n = (x - (Math.pow(x, 3) / (3 * (Math.pow(x, 2)))));
             return newtonRp(n,y-1);
         }
+    }
+    
+    public static double arredonda(double num) {
+        int decimalPlace = 2;
+        BigDecimal bd = new BigDecimal(num);
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        num = bd.doubleValue();
+        return num;
     }
 }

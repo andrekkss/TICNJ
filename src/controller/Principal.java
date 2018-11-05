@@ -16,8 +16,8 @@ public class Principal {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){       
         PrincipalFrame tela = new PrincipalFrame();
-        tela.setVisible(true);
+        tela.setVisible(true); 
     }
 }

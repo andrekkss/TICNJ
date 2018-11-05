@@ -7,7 +7,6 @@ package model;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import util.Arredondamento;
 import util.Formulas;
 import util.ListM;
 
@@ -27,10 +26,10 @@ public class Newton {
     private Formulas f = new Formulas();
     
     public Newton(double x, double y){
-        setN(getN());
+        setN(x);
         setFx(getN());
         setDfx(getN());
-        setXi(getN(), y);
+        setXi();
         setXxi(getN(), getXi());
     }
     
@@ -72,8 +71,8 @@ public class Newton {
     /**
      * @param xi the xi to set
      */
-    public void setXi(double xi, double y) {
-        this.xi = newtonRp(xi, y);
+    public void setXi() {
+        this.xi = (getN() - (getFx() / getDfx()));  ;
     }
 
     /**
@@ -102,18 +101,6 @@ public class Newton {
      */
     public void setN(double n) {
         this.n = n;
-    }
-    
-    
-   public double newtonRp(double x, double y) {
-        if (y < 0) {
-            return getN();
-        } else {
-            double n = 0;
-            n = (getN() - (getFx() / getDfx()));
-            n = Arredondamento.arredonda(n);
-            return newtonRp(n, y - 1);
-        }
     }
    
     public static DefaultTableModel getTableModel(ListM l){

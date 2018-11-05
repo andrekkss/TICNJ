@@ -5,15 +5,18 @@
  */
 package view.component;
 
-import javax.swing.table.DefaultTableModel;
-import util.ManagementPanel;
+import dao.JsonPersistence;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import util.ManagementPCalculos;
 
 /**
  *
  * @author andre
  */
 public class PCalculos extends javax.swing.JPanel {
-    private ManagementPanel m = new ManagementPanel();
+    private ManagementPCalculos m = new ManagementPCalculos();
+    private JsonPersistence j = new JsonPersistence();
     
     /**
      * Creates new form JCalculos
@@ -31,6 +34,9 @@ public class PCalculos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLimpar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnCalcular = new javax.swing.JButton();
         jtGuias = new javax.swing.JTabbedPane();
         jtDictomia = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -42,6 +48,8 @@ public class PCalculos extends javax.swing.JPanel {
         jlFormula = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtIteracoes = new javax.swing.JTextField();
+        txtResposta = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jtNewton = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -50,12 +58,33 @@ public class PCalculos extends javax.swing.JPanel {
         txtInteracoes = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtX = new javax.swing.JTextField();
-        btnCalcular = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
-        btnLimpar = new javax.swing.JButton();
+        jlFormula1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtResposta2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(794, 538));
+
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
         jtDictomia.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,6 +118,10 @@ public class PCalculos extends javax.swing.JPanel {
 
         jLabel1.setText("iterações:");
 
+        txtResposta.setText("0");
+
+        jLabel5.setText("Resposta:");
+
         javax.swing.GroupLayout jtDictomiaLayout = new javax.swing.GroupLayout(jtDictomia);
         jtDictomia.setLayout(jtDictomiaLayout);
         jtDictomiaLayout.setHorizontalGroup(
@@ -96,7 +129,12 @@ public class PCalculos extends javax.swing.JPanel {
             .addGroup(jtDictomiaLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlFormula)
+                    .addGroup(jtDictomiaLayout.createSequentialGroup()
+                        .addComponent(jlFormula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jtDictomiaLayout.createSequentialGroup()
                         .addComponent(jlValor2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,7 +147,7 @@ public class PCalculos extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtIteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(497, Short.MAX_VALUE))
+                .addContainerGap(450, Short.MAX_VALUE))
             .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jtDictomiaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -129,9 +167,12 @@ public class PCalculos extends javax.swing.JPanel {
                 .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlValor2)
                     .addComponent(txtX2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jlFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlFormula, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResposta)
+                    .addComponent(jLabel5))
+                .addContainerGap(303, Short.MAX_VALUE))
             .addGroup(jtDictomiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jtDictomiaLayout.createSequentialGroup()
                     .addContainerGap(177, Short.MAX_VALUE)
@@ -170,6 +211,12 @@ public class PCalculos extends javax.swing.JPanel {
             }
         });
 
+        jlFormula1.setText("Formula: x³(x^3)");
+
+        jLabel6.setText("Resposta:");
+
+        txtResposta2.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -187,7 +234,13 @@ public class PCalculos extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtInteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtInteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlFormula1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtResposta2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -202,7 +255,12 @@ public class PCalculos extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlFormula1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResposta2)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -220,17 +278,6 @@ public class PCalculos extends javax.swing.JPanel {
 
         jtGuias.addTab("Newton Rapshon", jtNewton);
 
-        btnCalcular.setText("Calcular");
-        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalcularActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setText("Salvar");
-
-        btnLimpar.setText("Limpar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,9 +286,9 @@ public class PCalculos extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCalcular)
-                .addGap(12, 12, 12)
-                .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvar)
+                .addGap(12, 12, 12)
                 .addComponent(btnLimpar)
                 .addGap(9, 9, 9))
         );
@@ -249,12 +296,12 @@ public class PCalculos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jtGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -268,10 +315,13 @@ public class PCalculos extends javax.swing.JPanel {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         if(jtGuias.getSelectedComponent() == jtDictomia){ 
-                ((DefaultTableModel)TabelaDicotomia.getModel()).setRowCount(0);
-                TabelaDicotomia.setModel(m.isDicotomia(Double.parseDouble(txtX1.getText()), Double.parseDouble(txtX2.getText()), Double.parseDouble(txtIteracoes.getText())));
+            m.removeAllRows(TabelaDicotomia, "Dicotomia");
+            TabelaDicotomia.setModel(m.isDicotomia(Double.parseDouble(txtX1.getText()), Double.parseDouble(txtX2.getText()), Double.parseDouble(txtIteracoes.getText()), txtResposta));
         } 
-        if(jtGuias.getSelectedComponent() == jtNewton) TabelaNewton.setModel(m.isNewton(Double.parseDouble(txtX.getText()), Double.parseDouble(txtInteracoes.getText())));
+        if(jtGuias.getSelectedComponent() == jtNewton){
+            m.removeAllRows(TabelaNewton, "Newton");
+            TabelaNewton.setModel(m.isNewton(Double.parseDouble(txtX.getText()), Double.parseDouble(txtInteracoes.getText()), txtResposta2));
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void txtInteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInteracoesActionPerformed
@@ -281,6 +331,46 @@ public class PCalculos extends javax.swing.JPanel {
     private void txtXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        if(jtGuias.getSelectedComponent() == jtDictomia){ 
+                m.removeAllRows(TabelaDicotomia, "Dicotomia");
+                txtX1.setText("");
+                txtX2.setText("");
+                txtIteracoes.setText("");
+                txtResposta.setText("0");
+        }  
+        if(jtGuias.getSelectedComponent() == jtNewton){
+                m.removeAllRows(TabelaNewton, "Newton");
+                txtX.setText("");
+                txtInteracoes.setText("");
+                txtResposta2.setText("0");
+        }
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if(jtGuias.getSelectedComponent() == jtDictomia){
+            j.setListaDicotomia(m.getListDicotomia());         
+            try {
+                j.writeJSON("json/historicod.json");
+                
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error "+ex);
+            } finally {
+                JOptionPane.showMessageDialog(this, "salvo no historico");
+            }
+        } 
+        if(jtGuias.getSelectedComponent() == jtNewton){
+            j.setListaNewton(m.getListNewtonRp());         
+            try {
+                j.writeJSON("json/historicon.json");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error "+ex);
+            } finally {
+                JOptionPane.showMessageDialog(this, "salvo no historico");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -292,10 +382,13 @@ public class PCalculos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel jlFormula;
+    private javax.swing.JLabel jlFormula1;
     private javax.swing.JLabel jlValor;
     private javax.swing.JLabel jlValor2;
     private javax.swing.JPanel jtDictomia;
@@ -303,6 +396,8 @@ public class PCalculos extends javax.swing.JPanel {
     private javax.swing.JPanel jtNewton;
     private javax.swing.JTextField txtInteracoes;
     private javax.swing.JTextField txtIteracoes;
+    private javax.swing.JLabel txtResposta;
+    private javax.swing.JLabel txtResposta2;
     private javax.swing.JTextField txtX;
     private javax.swing.JTextField txtX1;
     private javax.swing.JTextField txtX2;

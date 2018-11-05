@@ -7,7 +7,11 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import util.ManagementPanel;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import util.ManagementPCalculos;
 import view.component.*;
 
 /**
@@ -15,7 +19,7 @@ import view.component.*;
  * @author andre
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-    ManagementPanel management = new ManagementPanel();
+    ManagementPCalculos management = new ManagementPCalculos();
     /**
      * Creates new form PrincipalFrame
      */
@@ -185,7 +189,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(JPTela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -211,7 +215,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
-        componentDidMount(new PHistory());
+        try {
+            componentDidMount(new PHistory());
+        } catch (FileNotFoundException ex) {
+             JOptionPane.showMessageDialog(this, "Error " + ex);
+        } catch (NullPointerException a){
+             JOptionPane.showMessageDialog(this, "Arquivo vazio");
+        }
     }//GEN-LAST:event_btnHistoryActionPerformed
 
     private void componentWillMount(){
