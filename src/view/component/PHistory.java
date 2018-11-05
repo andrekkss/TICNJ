@@ -7,25 +7,28 @@ package view.component;
 
 import dao.JsonPersistence;
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
- *
+ * classe do component PHistory
  * @author andre
+ * @since 29-10-2018
  */
 public class PHistory extends javax.swing.JPanel {
     private JsonPersistence json = new JsonPersistence();
 
     /**
      * Creates new form Phistory
+     * instancia do componentDidMount()
      */
     public PHistory() throws FileNotFoundException {
         initComponents();
         componentDidMount();
     }
     
+    /**
+     * metodo para setar as tabelas de acordo com a leitura do JSON
+     * @throws FileNotFoundException caso não houver arquivo, dispara erro
+     */
     public void componentDidMount() throws FileNotFoundException{
         TabelaDicotomia1.setModel(json.montaTabelaDicotomia());
         TabelaNewton.setModel(json.montaTabelaNewton());

@@ -11,17 +11,20 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import util.ManagementPCalculos;
+import util.ManagementPanel;
 import view.component.*;
 
 /**
- *
+ * Classe da tela principal
  * @author andre
+ * @since 10-10-2018
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-    ManagementPCalculos management = new ManagementPCalculos();
+    ManagementPanel management = new ManagementPanel();
+    
     /**
      * Creates new form PrincipalFrame
+     * ativa as primeiras funçoes
      */
     public PrincipalFrame() {
         initComponents();
@@ -202,18 +205,34 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * botao para ativar a calculadora do windows
+     * @param evt evento
+     */
     private void btnCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalActionPerformed
         management.isCalculator();
     }//GEN-LAST:event_btnCalActionPerformed
 
+    /**
+     * chama o evento botao de calculos e seta o painel de PCalculos
+     * @param evt eventon
+     */
     private void btnNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewtonActionPerformed
         componentDidMount(new PCalculos());
     }//GEN-LAST:event_btnNewtonActionPerformed
 
+    /**
+     * chama o evento do botao home e retorna o primeiro painel 
+     * @param evt evento
+     */
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         componentWillMount();
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    /**
+     * chama o component do historico caso houver erro, dispara Exeception
+     * @param evt evento
+     */
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         try {
             componentDidMount(new PHistory());
@@ -224,14 +243,24 @@ public class PrincipalFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnHistoryActionPerformed
 
+    /**
+     *  ativa o primeiro component da tela principal
+     */
     private void componentWillMount(){
         management.SwitchPanel(JPTela, new PPrincipal());
     }
     
+    /**
+     * ativa os futuros components da tela
+     * @param comp recebe qual component ativa
+     */
     private void componentDidMount(Component comp){
         management.SwitchPanel(JPTela, comp);
     }
     
+    /**
+     * Ativa os botoes transparentes
+     */
     public void transparentButton(){
         management.transparentButton(btnHome);
         management.transparentButton(btnNewton);

@@ -8,14 +8,15 @@ package view.component;
 import dao.JsonPersistence;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import util.ManagementPCalculos;
+import util.ManagementPanel;
 
 /**
- *
+ * classe do painel PCALCULOS
  * @author andre
+ * @since 29-10-2018
  */
 public class PCalculos extends javax.swing.JPanel {
-    private ManagementPCalculos m = new ManagementPCalculos();
+    private ManagementPanel m = new ManagementPanel();
     private JsonPersistence j = new JsonPersistence();
     
     /**
@@ -313,6 +314,11 @@ public class PCalculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtX2ActionPerformed
 
+    /**
+     * aciona o evento de calculo do botao "Calcular"
+     * ativa os calculos de dicotomia ou newton
+     * @param evt evento
+     */
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         if(jtGuias.getSelectedComponent() == jtDictomia){ 
             m.removeAllRows(TabelaDicotomia, "Dicotomia");
@@ -332,6 +338,11 @@ public class PCalculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXActionPerformed
 
+    /**
+     * aciona o evento de click do botao limpar
+     * limpa todos os campos e table.
+     * @param evt Evento
+     */
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         if(jtGuias.getSelectedComponent() == jtDictomia){ 
                 m.removeAllRows(TabelaDicotomia, "Dicotomia");
@@ -348,6 +359,11 @@ public class PCalculos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLimparActionPerformed
 
+    /**
+     * aciona o evento de click do botao salvar
+     * salva no json os calculos de dicotomia ou newton
+     * @param evt evento
+     */
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(jtGuias.getSelectedComponent() == jtDictomia){
             j.setListaDicotomia(m.getListDicotomia());         

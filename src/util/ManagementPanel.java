@@ -12,49 +12,71 @@ import model.Dicotomia;
 import model.Newton;
 
 /**
- *
- * @author andre
+ * Classe para gerenciar o component PCalculos.java
+ * @author André Kitano
  * @since 20-10-2018
  * @version 1.0
- * 
  */
-public class ManagementPCalculos{
+public class ManagementPanel{
     private static ListM listDicotomia = new ListM();
     private static ListM listNewtonRp = new ListM();
     private static double resultado;
 
     /**
-     * @return the listDicotomia
+     * Método para retorno da lista trabalhada no calculo de Dicotomia
+     * @return a listDicotomia
      */
     public static ListM getListDicotomia() {
         return listDicotomia;
     }
 
     /**
-     * @return the listNewtonRp
+     * Método para retorno da lista trabalhada no calculo de Dicotomia
+     * @return a listNewtonRp
      */
     public static ListM getListNewtonRp() {
         return listNewtonRp;
     }
 
+    /**
+     * Metodo para setar o resultado dos calculos
+     * @param aResultado recebe resultado
+     */
     public static void setResultado(double aResultado) {
         resultado = aResultado;
     }
    
-   public void SwitchPanel(JPanel panel, Component comp){
+    /**
+     * Metodo para gerenciar a troca dos paineis
+     * @param panel recebe o painel
+     * @param comp recebe o component para inserir
+     */
+    public void SwitchPanel(JPanel panel, Component comp){
         panel.removeAll();
         panel.setLayout(new BorderLayout());
         panel.add(comp);
         panel.validate();
-   }
+    }
 
-   public void transparentButton(JButton button){
+    /**
+     * Metodo para deixar os Botoes transparentes
+     * @param button recebe o Botao no qual irá receber o layout
+     */
+    public void transparentButton(JButton button){
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
-   }
+    }
    
-   public static double troca(Double[] x, double y) {
+    /**
+     * Método para reconhecimento da troca em Dicotomia, no qual devolve os valores para um novo objeto e insere na lista
+     * @code  x1 = x[0]; x2 = x[4]; fx2 = x[5];
+     * @param x recebe um array de objeto do tipo Double
+     * @param y recebe a quantidade de interações
+     * @return 0 para finalizar o o metodo
+     * @version 0.5
+     */
+    public static double troca(Double[] x, double y) {
         if (y == 0) {
             getListDicotomia().isList();
         } else {
@@ -81,16 +103,32 @@ public class ManagementPCalculos{
         return 0;
     }
    
-   public static DefaultTableModel isDicotomia(double x1, double x2, double y,  JLabel l){
+    /**
+     * Metodo para devolver o table-model e ativar o metodo da troca Dicotomia
+     * Neste metodo tbm ativa os calculos de Dicotomia
+     * @param x1 valor de x1 do tipo double
+     * @param x2 valor de x2 do tipo double
+     * @param y valor para interações
+     * @param l JLabel no qual irá setar a resposta final.
+     * @return a Table-model
+     */
+    public static DefaultTableModel isDicotomia(double x1, double x2, double y,  JLabel l){
         Dicotomia d = new Dicotomia(x1, x2);      
         getListDicotomia().isInsert(d);
         Double[] dt = {d.getX1(), d.getX2(), d.getFx1(), d.getFx2(), d.getPm(), d.getFpm(), d.getError()};
         troca(dt, y);
         l.setText(String.valueOf(resultado));
         return d.getTableModel(getListDicotomia());
-   }  
+    }  
    
-   public static double trocaNewton(Double[] x, double y) {
+    /**
+     * Metodo para devolver o listaNewton e ativar o metodo da troca Newton
+     * @code  fxi = x[3];
+     * @param x recebe um array de objeto do tipo Double
+     * @param y recebe a quantidade de interações
+     * @return 0 para finalizar o metodo
+     */
+    public static double trocaNewton(Double[] x, double y) {
         if (y == 0) {
             getListNewtonRp().isList();
         } else {
@@ -105,7 +143,15 @@ public class ManagementPCalculos{
         return 0;
     }
    
-   public static DefaultTableModel isNewton(double x, double y, JLabel l) {
+    /**
+     * Metodo para devolver o table-model e ativar o metodo da troca Newton
+     * Neste metodo tbm ativa os calculos de Newton
+     * @param x recebe o valor do tipo double
+     * @param y recebe a quantidade de interações
+     * @param l JLabel no qual irá setar a resposta final.
+     * @return Table-Model
+     */
+    public static DefaultTableModel isNewton(double x, double y, JLabel l) {
         Newton n = new Newton(x, y);
         getListNewtonRp().isInsert(n);
         Double[] dt = {n.getN(), n.getFx(), n.getDfx(), n.getXi(), n.getXxi()};
@@ -114,7 +160,13 @@ public class ManagementPCalculos{
         return n.getTableModel(getListNewtonRp());
     }
    
-   public void removeAllRows(JTable dm, String list){
+    /**
+     * Método para remover e limpar listas e o Table-model
+     * esse metodo roda apos toda inserção ou apos o click no botao "Limpar"
+     * @param dm recebe o Table
+     * @param list recebe a lista
+     */
+    public void removeAllRows(JTable dm, String list){
        if(list == "Dicotomia"){ getListDicotomia().getList().clear(); }else{ getListNewtonRp().getList().clear(); }
        DefaultTableModel model = (DefaultTableModel) dm.getModel();
         while(model.getRowCount() > 0){
@@ -122,13 +174,16 @@ public class ManagementPCalculos{
                 model.removeRow(i);
             }
         }
-   }
+    }
  
-   public void isCalculator(){
+    /**
+     * Metodo para chamar a calculadora do Windows
+     */
+    public void isCalculator(){
         try{
            Runtime.getRuntime().exec("C:\\Windows\\System32\\calc.exe");
         }catch(Exception e){
-           System.err.println("Deu pau!" + e );
+           System.out.println(e);
       }
    }
 }

@@ -8,8 +8,8 @@ package util;
 import java.util.*;
 
 /**
- * Essa classe para gerenciamento da ArrayList no qual irá receber os parametros dinamicamente
- * @author andre
+ * Essa classe é gerenciamento da ArrayList no qual irá receber os parametros dinamicamente
+ * @author André Kitano
  * @version 1.0
  * @since 19-10-2018
  */
@@ -17,6 +17,7 @@ public class ListM<T>{
     private ArrayList<T> list = new ArrayList<T>();
 
     /**
+     * Metodo para obter a lista do tipo objeto
      * @return the list
      */
     public ArrayList<T> getList() {

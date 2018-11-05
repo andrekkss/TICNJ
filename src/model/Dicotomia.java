@@ -9,12 +9,12 @@ import util.Formulas;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import util.ListM;
+
 /**
  * Classe responsável por fazer as equações referentes a Dicotomia 
  * @since 19-10-2018
  * @author Caique
  * @author Gabriel
- * 
  */
 public class Dicotomia {
     private double x1; private double x2;
@@ -160,7 +160,7 @@ public class Dicotomia {
     }
 
     /**
-     * @param error parâmetro que define a margem de erro entre os parâmetros x1 e x2
+     * error parâmetro que define a margem de erro entre os parâmetros x1 e x2
      * @param x1 parâmetro do tipo double
      * @param x2 parâmetro do tipo double
      */

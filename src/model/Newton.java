@@ -34,6 +34,7 @@ public class Newton {
     }
     
     /**
+     * 
      * @return the fx
      */
     public double getFx() {

@@ -9,11 +9,15 @@ import view.PrincipalFrame;
  */
 
 /**
- * @author andre
+ * Classe responsável por inicializar o programa 
+ * @author André Kitano
+ * @since 19-10-2018
+ * @link http://https://github.com/andrekkss/TICNJ
  */
 public class Principal {
 
     /**
+     * método main
      * @param args the command line arguments
      */
     public static void main(String[] args){       

@@ -29,11 +29,9 @@ public class Formulas {
     }
     
     /**
-     * funcDerivada é o calculo da função para o valor de x no metodo de Newton
-     * Rhapson
-     *
+     * funcDerivada é o calculo da função para o valor de x no metodo de Newton Rhapson
      * @param x1 É um parâmetro do tipo double
-     *
+     * @return o valor de fn
      */
     public static double cuboDerivada(double x1) {
         double fn = 0;
@@ -86,7 +84,7 @@ public class Formulas {
      * newtonRp é o calculo para aproximar as raízes da equação recebendo camo parametros o valor inicial de x e o numero de interações
      * @param x O parâmetro do tipo object
      * @param y O parâmetro do tipo object
-     *
+     * @return valor de interações ou retorna para uma recursividade
      */
     public static double newtonRp(double x, int y) {
         if (y < 0) {
@@ -98,6 +96,11 @@ public class Formulas {
         }
     }
     
+    /**
+     * arredonda irá arredondar valores para duas casas depois da virgula
+     * @param num recebe o valor do tipo double
+     * @return num já arredondado
+     */
     public static double arredonda(double num) {
         int decimalPlace = 2;
         BigDecimal bd = new BigDecimal(num);

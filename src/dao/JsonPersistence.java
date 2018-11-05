@@ -15,8 +15,10 @@ import model.*;
 import util.ListM;
 
 /**
- *
- * @author andre
+ * Classe responsavel pelo JSON para guardar no historico.
+ * @author André Kitano
+ * @since 05-11-2018
+ * @version 1.0
  */
 public class JsonPersistence{
    private Gson gson = new GsonBuilder().setLenient().create();
@@ -24,7 +26,8 @@ public class JsonPersistence{
    static private ArrayList<Newton> listaNewton;
 
    /**
-    * @param listaDicotomia the listaDicotomia to set
+    * Seta ListaDicotomia através de um objeto do tipo ListM
+    * @param l objeto herda a lista do tipo Objeto
     */
    public static void setListaDicotomia(ListM l) {
        l.isList();
@@ -32,12 +35,18 @@ public class JsonPersistence{
    }
 
    /**
-    * @param listaNewton the listaNewton to set
+    * Seta ListaNewton através de um objeto do tipo ListM
+    * @param  l objeto herda a lista do tipo Objeto
     */
    public static void setListaNewton(ListM l) {
         listaNewton = l.getList();
    }
     
+   /**
+    * Faz a escrita no arquivo json no qual usára a lista do tipo Dicotomia ou Newton
+    * @param arquivo receberá nesta variavel o caminho do arquivo
+    * @throws IOException caso o arquivo JSON não exista ou arquivo incopativel dispara a Exeception
+    */
    public void writeJSON(String arquivo) throws IOException{
         BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo, true));
         if(arquivo == "json/historicod.json"){
@@ -54,6 +63,11 @@ public class JsonPersistence{
         writer.close();
    }
    
+   /**
+    * Faz a leitura do arquivo JSON historyd(dicotomia) e devolve uma table-model
+    * @return modelo no qual é um table-model
+    * @throws FileNotFoundException caso o arquivo JSON não seja encontrado dispara a Exeception
+    */
     public DefaultTableModel montaTabelaDicotomia() throws FileNotFoundException{
         Type type = new TypeToken<List<Dicotomia>>(){}.getType(); 
         Reader reader = new FileReader("json/historicod.json");
@@ -70,7 +84,12 @@ public class JsonPersistence{
         return modelo;
     }
     
-     public DefaultTableModel montaTabelaNewton() throws FileNotFoundException{
+    /**
+    * Faz a leitura do arquivo JSON historyn(Newton) e devolve uma table-model
+    * @return modelo no qual é um table-model
+    * @throws FileNotFoundException caso o arquivo JSON não seja encontrado dispara a Exeception
+    */
+    public DefaultTableModel montaTabelaNewton() throws FileNotFoundException{
         Type type = new TypeToken<List<Newton>>(){}.getType(); 
         Reader reader = new FileReader("json/historicon.json");
         List<Newton> listan = gson.fromJson(reader, type);
@@ -84,7 +103,5 @@ public class JsonPersistence{
             modelo.addRow(g);
         }
         return modelo;
-    }
-     
-     
+    } 
 }
