@@ -5,18 +5,15 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import util.ManagementPanel;
 import view.component.*;
 
 /**
  * Classe da tela principal
- * @author andre
+ * @author André Kitano
  * @since 10-10-2018
  */
 public class PrincipalFrame extends javax.swing.JFrame {

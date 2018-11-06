@@ -21,7 +21,31 @@ public class ManagementPanel{
     private static ListM listDicotomia = new ListM();
     private static ListM listNewtonRp = new ListM();
     private static double resultado;
+    private static double resultadoX1;
+    private static double resultadoX2;
+    private static double resultadoX3;
 
+    /**
+     * @param aResultadoX1 o resultadoX1 
+     */
+    public static void setResultadoX1(double aResultadoX1) {
+        resultadoX1 = aResultadoX1;
+    }
+
+    /**
+     * @param aResultadoX2 o resultadoX2 
+     */
+    public static void setResultadoX2(double aResultadoX2) {
+        resultadoX2 = aResultadoX2;
+    }
+
+    /**
+     * @param aResultadoX3 o resultadoX3
+     */
+    public static void setResultadoX3(double aResultadoX3) {
+        resultadoX3 = aResultadoX3;
+    }
+ 
     /**
      * Método para retorno da lista trabalhada no calculo de Dicotomia
      * @return a listDicotomia
@@ -36,6 +60,28 @@ public class ManagementPanel{
      */
     public static ListM getListNewtonRp() {
         return listNewtonRp;
+    }
+    
+    /**
+     * seta o resultado de dicotomia
+     * @param aproxi seta a aproximação
+     * @param rx1 seta a resposta de x1
+     * @param rx2 seta a resposta de x2
+     */
+    public void getResultDicotomia(JLabel aproxi, JLabel rx1, JLabel rx2){
+        aproxi.setText(String.valueOf(resultado));
+        rx1.setText(String.valueOf(resultadoX1));
+        rx2.setText(String.valueOf(resultadoX2));
+    }
+    
+    /**
+     * metodo para setar o resultado do Newton
+     * @param aprox seta aproximação
+     * @param x1 seta x1
+     */
+    public void getResultNewton(JLabel aprox, JLabel x1){
+        aprox.setText(String.valueOf(resultado));
+        x1.setText(String.valueOf(resultadoX3));
     }
 
     /**
@@ -70,7 +116,6 @@ public class ManagementPanel{
    
     /**
      * Método para reconhecimento da troca em Dicotomia, no qual devolve os valores para um novo objeto e insere na lista
-     * @code  x1 = x[0]; x2 = x[4]; fx2 = x[5];
      * @param x recebe um array de objeto do tipo Double
      * @param y recebe a quantidade de interações
      * @return 0 para finalizar o o metodo
@@ -87,6 +132,8 @@ public class ManagementPanel{
                 Dicotomia d = new Dicotomia(x1, x2, fx2, true);
                 Double[] vl = {d.getX1(),d.getX2(),d.getFx1(),d.getFx2(),d.getPm(),d.getFpm(),d.getError()};
                 setResultado(d.getError());
+                setResultadoX1(d.getX1());
+                setResultadoX2(d.getX2());
                 getListDicotomia().isInsert(d);
                 return troca(vl, y - 1);
             } else {
@@ -96,6 +143,8 @@ public class ManagementPanel{
                 Dicotomia d = new Dicotomia(x2, x1, fx1, false);
                 Double[] vl = {d.getX1(),d.getX2(),d.getFx1(),d.getFx2(),d.getPm(),d.getFpm(),d.getError()};
                 setResultado(d.getError());
+                setResultadoX1(d.getX1());
+                setResultadoX2(d.getX2());
                 getListDicotomia().isInsert(d);
                 return troca(vl, y - 1);
             }
@@ -109,21 +158,18 @@ public class ManagementPanel{
      * @param x1 valor de x1 do tipo double
      * @param x2 valor de x2 do tipo double
      * @param y valor para interações
-     * @param l JLabel no qual irá setar a resposta final.
      * @return a Table-model
      */
-    public static DefaultTableModel isDicotomia(double x1, double x2, double y,  JLabel l){
+    public static DefaultTableModel isDicotomia(double x1, double x2, double y){
         Dicotomia d = new Dicotomia(x1, x2);      
         getListDicotomia().isInsert(d);
         Double[] dt = {d.getX1(), d.getX2(), d.getFx1(), d.getFx2(), d.getPm(), d.getFpm(), d.getError()};
         troca(dt, y);
-        l.setText(String.valueOf(resultado));
         return d.getTableModel(getListDicotomia());
     }  
    
     /**
      * Metodo para devolver o listaNewton e ativar o metodo da troca Newton
-     * @code  fxi = x[3];
      * @param x recebe um array de objeto do tipo Double
      * @param y recebe a quantidade de interações
      * @return 0 para finalizar o metodo
@@ -136,7 +182,8 @@ public class ManagementPanel{
             fxi = x[3];
             Newton n = new Newton(fxi, y);
             Double[] vl = {n.getN(), n.getFx(), n.getDfx(), n.getXi(), n.getXxi()};
-            setResultado(n.getXi());
+            setResultado(n.getXxi());
+            setResultadoX3(n.getN());
             getListNewtonRp().isInsert(n);
             return trocaNewton(vl, y - 1);
         }
@@ -148,15 +195,13 @@ public class ManagementPanel{
      * Neste metodo tbm ativa os calculos de Newton
      * @param x recebe o valor do tipo double
      * @param y recebe a quantidade de interações
-     * @param l JLabel no qual irá setar a resposta final.
      * @return Table-Model
      */
-    public static DefaultTableModel isNewton(double x, double y, JLabel l) {
+    public static DefaultTableModel isNewton(double x, double y) {
         Newton n = new Newton(x, y);
         getListNewtonRp().isInsert(n);
         Double[] dt = {n.getN(), n.getFx(), n.getDfx(), n.getXi(), n.getXxi()};
         trocaNewton(dt, y);
-        l.setText(String.valueOf(resultado));
         return n.getTableModel(getListNewtonRp());
     }
    

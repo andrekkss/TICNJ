@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 
 /**
  * classe do component PHistory
- * @author andre
+ * @author André Kitano
  * @since 29-10-2018
  */
 public class PHistory extends javax.swing.JPanel {

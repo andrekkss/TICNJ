@@ -11,7 +11,7 @@ import util.Formulas;
 import util.ListM;
 
 /**
- * Classe responsável por fazer as equações referentes ao método de Newton Raphson 
+ * Classe responsável por fazer as equações referentes ao método de Newton Raphson
  * @author Delmar
  * @author Cainan
  */
@@ -41,7 +41,6 @@ public class Newton {
     }
     
     /**
-     * 
      * @return retorna função de x
      */
     public double getFx() {
@@ -99,7 +98,7 @@ public class Newton {
         this.xxi = f.margemErro(xxi,x);
     }
 
-    /** 
+    /**
      * retorna o valor de n
      */
     public double getN() {
@@ -133,7 +132,7 @@ public class Newton {
     }
     
     /**
-     * método toString que retorna o valor de n 
+     * método toString que retorna o valor de n
      * @return retorna printLn
      */
     @Override

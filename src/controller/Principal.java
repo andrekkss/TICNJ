@@ -9,10 +9,10 @@ import view.PrincipalFrame;
  */
 
 /**
+ * repositorio https://github.com/andrekkss/TICNJ
  * Classe responsável por inicializar o programa 
  * @author André Kitano
  * @since 19-10-2018
- * @link http://https://github.com/andrekkss/TICNJ
  */
 public class Principal {
 
