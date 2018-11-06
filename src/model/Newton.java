@@ -11,10 +11,9 @@ import util.Formulas;
 import util.ListM;
 
 /**
- *
+ * Classe responsável por fazer as equações referentes ao método de Newton Raphson 
  * @author Delmar
  * @author Cainan
- * 
  */
 public class Newton {
     private double fx;
@@ -23,8 +22,16 @@ public class Newton {
     private double xxi;
     private double n;
 
+    /**
+     * Objeto instanciado Formulas
+     */
     private Formulas f = new Formulas();
     
+    /**
+     * Método que recebe os valores necessários para realizar os calculos de Newton Raphson
+     * @param x recebe um valor x do tipo double
+     * @param y parâmetro y do tipo double
+     */
     public Newton(double x, double y){
         setN(x);
         setFx(getN());
@@ -35,75 +42,82 @@ public class Newton {
     
     /**
      * 
-     * @return the fx
+     * @return retorna função de x
      */
     public double getFx() {
         return fx;
     }
 
     /**
-     * @param fx the fx to set
+     * @param fx parâmetro que define o valor de função de x
      */
     public void setFx(double fx) {
         this.fx = f.cubo(fx);
     }
 
     /**
-     * @return the dfx
+     * @return retorna a derivada da função de x
      */
     public double getDfx() {
         return dfx;
     }
 
     /**
-     * @param dfx the dfx to set
+     * @param dfx parâmetro da derivada da função x
      */
     public void setDfx(double dfx) {
         this.dfx = f.cuboDerivada(dfx);
     }
 
     /**
-     * @return the xi
+     * @return retorna o valor de Xi
      */
     public double getXi() {
         return xi;
     }
 
     /**
-     * @param xi the xi to set
+     * define o valor de Xi (n - (fx/dfx))
      */
     public void setXi() {
         this.xi = (getN() - (getFx() / getDfx()));  ;
     }
 
     /**
-     * @return the xxi
+     * @return retorna o valor de Xx1
      */
     public double getXxi() {
         return xxi;
     }
 
     /**
-     * @param xxi the xxi to set
+     * define a margem de erro do valor Xxi
+     * @param xxi parâmetro do tipo double
+     * @param x parâmetro do tipo double
      */
     public void setXxi(double xxi, double x) {
         this.xxi = f.margemErro(xxi,x);
     }
 
-    /** Getters e Setters
-     * @return the n
+    /** 
+     * retorna o valor de n
      */
     public double getN() {
         return n;
     }
 
     /**
-     * @param n the n to set
+     * @param n parâmetro n do tipo double
      */
     public void setN(double n) {
         this.n = n;
     }
    
+    /**
+     * Método que adiciona as colunas de interação, x1, f(x1), derivada de f(xi), e a margem de erro
+     * @param l parâmetro ListM
+     * @return retorna o modelo
+     */
     public static DefaultTableModel getTableModel(ListM l){
         List<Newton> lista = l.getList();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -118,6 +132,10 @@ public class Newton {
         return modelo;
     }
     
+    /**
+     * método toString que retorna o valor de n 
+     * @return retorna printLn
+     */
     @Override
     public String toString() {
         return "[Numero: " + this.n + "]";
