@@ -120,9 +120,12 @@ public class Newton {
     public static DefaultTableModel getTableModel(ListM l){
         List<Newton> lista = l.getList();
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Iterações"); modelo.addColumn("dF(Xi)");
-        modelo.addColumn("Xi");modelo.addColumn("X(i+1)");
-        modelo.addColumn("F(Xi)"); modelo.addColumn("X(i+1)-Xi");
+        modelo.addColumn("Iterações"); 
+        modelo.addColumn("Xi");
+        modelo.addColumn("F(Xi)");
+        modelo.addColumn("dF(Xi)");
+        modelo.addColumn("X(i+1)");
+        modelo.addColumn("X(i+1)-Xi");
         double i = 0;
         for(Newton n: lista){
             Double[] g = {i++, n.getN(), n.getFx(), n.getDfx(), n.getXi(), n.getXxi()};

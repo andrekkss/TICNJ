@@ -183,7 +183,7 @@ public class ManagementPanel{
             Newton n = new Newton(fxi, y);
             Double[] vl = {n.getN(), n.getFx(), n.getDfx(), n.getXi(), n.getXxi()};
             setResultado(n.getXxi());
-            setResultadoX3(n.getN());
+            setResultadoX3(n.getXi());
             getListNewtonRp().isInsert(n);
             return trocaNewton(vl, y - 1);
         }

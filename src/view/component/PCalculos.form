@@ -596,7 +596,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Resposta de x1:"/>
+                        <Property name="text" type="java.lang.String" value="Resposta de x:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel9">

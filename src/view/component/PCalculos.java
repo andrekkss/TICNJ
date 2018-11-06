@@ -274,7 +274,7 @@ public class PCalculos extends javax.swing.JPanel {
 
         jlFormula2.setText("Formula: x³(x^3)");
 
-        jLabel8.setText("Resposta de x1:");
+        jLabel8.setText("Resposta de x:");
 
         jLabel9.setText("Aproximação:");
 
